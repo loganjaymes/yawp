@@ -35,6 +35,7 @@ set(SourceFiles
         src/PluginProcessor.h
 		src/Square.h
 		src/Square.cpp
+		src/Sinewave.h
 )
 
 # Change these to your own preferences
