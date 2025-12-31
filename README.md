@@ -1,2 +1,2 @@
-# custom-plugins
-Custom DAW plugins using the JUCE framework.
+# YAWP
+Yet-Another-Workstation-Plugin, created with the JUCE framework.
