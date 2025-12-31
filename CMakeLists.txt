@@ -33,6 +33,8 @@ set(SourceFiles
         src/PluginEditor.h
         src/PluginProcessor.cpp
         src/PluginProcessor.h
+		src/Square.h
+		src/Square.cpp
 )
 
 # Change these to your own preferences
