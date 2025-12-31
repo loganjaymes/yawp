@@ -2,15 +2,12 @@
 
 #include <juce_audio_processors/juce_audio_processors.h>
 
-//==============================================================================
 class AudioPluginAudioProcessor final : public juce::AudioProcessor
 {
 public:
-    //==============================================================================
     AudioPluginAudioProcessor();
     ~AudioPluginAudioProcessor() override;
 
-    //==============================================================================
     void prepareToPlay (double sampleRate, int samplesPerBlock) override;
     void releaseResources() override;
 
@@ -19,11 +16,9 @@ public:
     void processBlock (juce::AudioBuffer<float>&, juce::MidiBuffer&) override;
     using AudioProcessor::processBlock;
 
-    //==============================================================================
     juce::AudioProcessorEditor* createEditor() override;
     bool hasEditor() const override;
 
-    //==============================================================================
     const juce::String getName() const override;
 
     bool acceptsMidi() const override;
