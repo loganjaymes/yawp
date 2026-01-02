@@ -8,19 +8,36 @@
 
 class Sine {
 	public: 
-		void prepare(double sampleRate) {
-			currentSampleRate = sampleRate;
+		// init
+		void prepare(double sampleRate, int numChannels) {
+			currSampleRate = sampleRate;
+			timeInc = 1.0f/currSampleRate;
+			currTime.resize(numChannels, 0.0f);
 		}
 
 		void process(juce::AudioBuffer<float>& buf) {
-		
+			if (currTime.size() != buf.getNumChanneles()) { return; }
+
+			for (int channel = 0; channel < buf.getNumChannels(); ++channel) {
+
+				// write pointer
+				auto* output = buf.getWritePointer(channel);
+
+				for (int sample = 0; sample < buf.getNumSamples(); ++sample) {
+					// sin eq
+					// need n number of channels for each channel being processed
+					output[sample] = amplitude * std::sinf(juce::MathConstants<float>::twoPi * freq * currTime[channel]);
+					currTime[channel] = currTime[channel] + timeInc;
+
+				}
+			}
 		}
 
 	private: 
 		// basic sine eq vars
 		float amplitude = 0.2f;
 		float freq = 311.13f; // middle Eb lol
-		float currentSampleRate = 0.0f;
+		float currSampleRate = 0.0f;
 		float timeInc = 0.0f;
-		float currTime = 0.0f;
+		std::vector<float> currTime;
 }
